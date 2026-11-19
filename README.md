@@ -1,47 +1,47 @@
 # Calendar App
 
-Aplicación full stack para registrar y administrar eventos en un calendario.
+A full-stack application for creating and managing calendar events.
 
-El proyecto está organizado en dos aplicaciones independientes:
+The project is organized into two independent applications:
 
 - **Frontend:** React.
-- **Backend:** Node.js con JavaScript.
-- **Base de datos:** MongoDB.
+- **Backend:** Node.js with JavaScript.
+- **Database:** MongoDB.
 
-## Estructura del proyecto
+## Project structure
 
 ```text
 calendar-app/
-├── frontend/          # Aplicación React
-├── backend/           # API Node.js
-│   ├── .env.example   # Plantilla de variables de entorno
+├── frontend/          # React application
+├── backend/           # Node.js API
+│   ├── .env.example   # Environment variable template
 │   └── ...
 ├── .gitignore
 └── README.md
 ```
 
-## Requisitos previos
+## Prerequisites
 
-Antes de ejecutar el proyecto, instala:
+Before running the project, install:
 
-- [Node.js](https://nodejs.org/) y npm.
-- [MongoDB](https://www.mongodb.com/) local o una instancia en [MongoDB Atlas](https://www.mongodb.com/atlas).
+- [Node.js](https://nodejs.org/) and npm.
+- A local [MongoDB](https://www.mongodb.com/) instance or one from [MongoDB Atlas](https://www.mongodb.com/atlas).
 - Git.
 
-## Configuración del backend
+## Backend configuration
 
-### 1. Instalar dependencias
+### 1. Install dependencies
 
-Abre una terminal en la carpeta del backend:
+Open a terminal in the backend folder:
 
 ```bash
 cd backend
 npm install
 ```
 
-### 2. Crear las variables de entorno
+### 2. Create the environment variables
 
-Crea un archivo llamado `.env` dentro de `backend/`, tomando como referencia `backend/.env.example`.
+Create a `.env` file inside `backend/`, using `backend/.env.example` as a reference.
 
 ```env
 PORT=3000
@@ -49,56 +49,56 @@ DB_CNN=mongodb://localhost:27017/calendar-app
 SECRET_JWT_SEED=replace_with_a_secure_random_secret
 ```
 
-| Variable | Descripción |
+| Variable | Description |
 |---|---|
-| `PORT` | Puerto en el que se ejecuta la aplicación Node.js. |
-| `DB_CNN` | Cadena de conexión a MongoDB. |
-| `SECRET_JWT_SEED` | Clave secreta utilizada para firmar y verificar los JWT. |
+| `PORT` | Port where the Node.js application runs. |
+| `DB_CNN` | MongoDB connection string. |
+| `SECRET_JWT_SEED` | Secret key used to sign and verify JWTs. |
 
-**Notas importantes:**
+**Important notes:**
 
-- Si utilizas MongoDB Atlas, reemplaza `DB_CNN` por la cadena de conexión de tu clúster.
-- Genera un valor aleatorio y privado para `SECRET_JWT_SEED`. Puedes crear uno con:
+- If you use MongoDB Atlas, replace `DB_CNN` with your cluster's connection string.
+- Generate a random, private value for `SECRET_JWT_SEED`. You can create one with:
 
   ```bash
   node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
   ```
 
-- No compartas el archivo `.env` ni publiques sus valores. El archivo `.env` debe permanecer fuera del control de versiones.
-- Si la contraseña de MongoDB contiene caracteres especiales, asegúrate de codificarlos correctamente en la URI.
+- Do not share the `.env` file or publish its values. The `.env` file must remain outside version control.
+- If the MongoDB password contains special characters, make sure to encode them correctly in the URI.
 
-### 3. Ejecutar el backend
+### 3. Run the backend
 
-Utiliza el script disponible en `backend/package.json`. Por ejemplo, si está definido el script `start`:
+Use the script available in `backend/package.json`. For example, if the `start` script is defined:
 
 ```bash
 npm run dev
 ```
 
-## Configuración del frontend
+## Frontend configuration
 
-### 1. Instalar dependencias
+### 1. Install dependencies
 
-Desde la raíz del repositorio:
+From the repository root:
 
 ```bash
 cd frontend
 npm install
 ```
 
-### 2. Ejecutar el frontend
+### 2. Run the frontend
 
-Utiliza el script definido en `frontend/package.json`. En un proyecto React con Vite normalmente es:
+Use the script defined in `frontend/package.json`. In a React project with Vite, it is usually:
 
 ```bash
 npm run dev
 ```
 
-Si utilizas otra herramienta de React, consulta los scripts disponibles en `frontend/package.json`.
+If you use another React toolchain, check the scripts available in `frontend/package.json`.
 
-## Ejecutar el proyecto
+## Run the project
 
-Abre dos terminales:
+Open two terminals:
 
 **Terminal 1 — Backend**
 
@@ -116,10 +116,10 @@ npm install
 npm run dev
 ```
 
-Asegúrate de que el frontend apunte a la URL del backend y que MongoDB esté disponible.
+Make sure the frontend points to the backend URL and that MongoDB is available.
 
-## Variables de entorno y seguridad
+## Environment variables and security
 
-- No subas archivos `.env` al repositorio.
-- Mantén actualizado `.env.example` cuando agregues o cambies variables, pero utiliza valores vacíos o de ejemplo, nunca secretos reales.
-- No incluyas credenciales, tokens ni cadenas de conexión privadas en el código fuente.
+- Do not upload `.env` files to the repository.
+- Keep `.env.example` up to date when adding or changing variables, but use empty or example values—never real secrets.
+- Do not include credentials, tokens, or private connection strings in the source code.
